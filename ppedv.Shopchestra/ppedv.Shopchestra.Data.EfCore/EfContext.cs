@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using ppedv.Shopchestra.Model;
 
 namespace ppedv.Shopchestra.Data.EfCore
