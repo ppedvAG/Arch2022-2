@@ -1,5 +1,6 @@
 using AutoFixture;
 using AutoFixture.Kernel;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ppedv.Shopchestra.Model;
 using System;
@@ -39,6 +40,7 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
             {
                 var loaded = context.Kunden.Find(k.Id);
                 Assert.AreEqual(k.Name, loaded.Name);
+                k.Name.Should().Be(loaded.Name);
 
                 loaded.Name = newName;
                 context.SaveChanges();
@@ -56,7 +58,9 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
             using (var context = new EfContext()) //READ + UPDATE
             {
                 var loaded = context.Kunden.Find(k.Id);
+                
                 Assert.IsNull(loaded);
+                loaded.Should().BeNull();
             }
         }
 
@@ -67,7 +71,7 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
             var fix = new Fixture();
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
             fix.Customizations.Add(new PropertyNameOmitter(nameof(Entity.Id)));
-            
+
             //var k = fix.Build<Kunde>().Without(x => x.Id).Create();
             var k = fix.Create<Kunde>();
 
@@ -75,6 +79,13 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
             {
                 context.Kunden.Add(k);
                 context.SaveChanges();
+            }
+
+            using (var context = new EfContext())
+            {
+                var loaded = context.Kunden.Find(k.Id);
+
+                loaded.Should().BeEquivalentTo(k, cfg => cfg.IgnoringCyclicReferences());
             }
         }
     }
