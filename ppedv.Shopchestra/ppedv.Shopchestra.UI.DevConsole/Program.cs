@@ -11,7 +11,7 @@ foreach (var kunde in core.Repository.GetAll<Kunde>())
     Console.WriteLine($"{kunde.Name}");
     foreach (var b in kunde.Bestellungen)
     {
-        Console.WriteLine($"\t{b.Bestelldatum}");
+        Console.WriteLine($"\t{b.Bestelldatum} [{core.CalcBestellSumme(b):c}]");
         foreach (var pos in b.Positionen)
         {
             Console.WriteLine($"\t\t{pos.Menge}x {pos.Einzelpreis:c} {pos.Produkt.Bezeichnung}");

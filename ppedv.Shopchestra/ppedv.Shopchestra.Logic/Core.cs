@@ -12,7 +12,7 @@ namespace ppedv.Shopchestra.Logic
             Repository = new Data.EfCore.EfRepository();
         }
 
-        public Kunde GetVIPCustomer()
+        public Kunde? GetVIPCustomer()
         {
             return Repository.GetAll<Kunde>().OrderBy(x => x.Bestellungen.Count).FirstOrDefault();
         }
@@ -20,7 +20,7 @@ namespace ppedv.Shopchestra.Logic
 
         public decimal CalcBestellSumme(Bestellung bestellung)
         {
-            throw new NotImplementedException();
+            return bestellung.Positionen.Sum(x => x.Einzelpreis * (decimal)x.Menge);
         }
 
     }
