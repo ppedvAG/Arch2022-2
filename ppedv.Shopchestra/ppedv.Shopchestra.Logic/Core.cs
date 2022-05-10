@@ -1,4 +1,5 @@
-﻿using ppedv.Shopchestra.Model;
+﻿using Microsoft.Toolkit.Diagnostics;
+using ppedv.Shopchestra.Model;
 using ppedv.Shopchestra.Model.Contracts;
 
 namespace ppedv.Shopchestra.Logic
@@ -20,6 +21,11 @@ namespace ppedv.Shopchestra.Logic
 
         public decimal CalcBestellSumme(Bestellung bestellung)
         {
+            //if (bestellung == null)
+            //    throw new ArgumentNullException();
+            Guard.IsNotNull(bestellung, nameof(bestellung));
+            Guard.IsNotNull(bestellung.Positionen, nameof(bestellung.Positionen));
+            
             return bestellung.Positionen.Sum(x => x.Einzelpreis * (decimal)x.Menge);
         }
 
