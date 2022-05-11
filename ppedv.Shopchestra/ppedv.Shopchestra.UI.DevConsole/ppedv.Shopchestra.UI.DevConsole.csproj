@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ppedv.Shopchestra.Data.EfCore\ppedv.Shopchestra.Data.EfCore.csproj" />
     <ProjectReference Include="..\ppedv.Shopchestra.Logic\ppedv.Shopchestra.Logic.csproj" />
     <ProjectReference Include="..\ppedv.Shopchestra.Model\ppedv.Shopchestra.Model.csproj" />
