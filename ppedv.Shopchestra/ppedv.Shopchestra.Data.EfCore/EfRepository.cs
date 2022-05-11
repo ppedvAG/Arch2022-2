@@ -30,6 +30,11 @@ namespace ppedv.Shopchestra.Data.EfCore
             return _context.Set<T>().Find(id);
         }
 
+        public IQueryable<T> Query<T>() where T : Entity
+        {
+            return _context.Set<T>();
+        }
+
         public void Save()
         {
             _context.SaveChanges();

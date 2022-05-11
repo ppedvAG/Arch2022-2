@@ -28,7 +28,11 @@ var cont = builder.Build();
 
 var core = new Core(cont.Resolve<IRepository>());
 
-foreach (var kunde in core.Repository.GetAll<Kunde>())
+var query = core.Repository.Query<Kunde>().Where(x => x.Name.Length > 1).OrderBy(x => x.Bestellungen.Count);
+
+query = query.ThenBy(x => x.Land);
+
+foreach (var kunde in query.ToList())
 {
     Console.WriteLine($"{kunde.Name}");
     foreach (var b in kunde.Bestellungen)

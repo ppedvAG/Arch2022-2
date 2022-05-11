@@ -3,6 +3,7 @@ using ppedv.Shopchestra.Model;
 using ppedv.Shopchestra.Model.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace ppedv.Shopchestra.Logic.Tests
@@ -160,6 +161,11 @@ namespace ppedv.Shopchestra.Logic.Tests
         }
 
         public void Update<T>(T entity) where T : Entity
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> Query<T>() where T : Entity
         {
             throw new NotImplementedException();
         }
