@@ -8,14 +8,23 @@ namespace ppedv.Shopchestra.Logic
     {
         public IRepository Repository { get; init; }
 
-        public Core()
+        public Core(IRepository repository)
+        {
+            Repository = repository;
+        }
+
+        public Core() //todo di
         {
             Repository = new Data.EfCore.EfRepository();
         }
 
+        
+
         public Kunde? GetVIPCustomer()
         {
-            return Repository.GetAll<Kunde>().OrderBy(x => x.Bestellungen.Count).FirstOrDefault();
+            return Repository.GetAll<Kunde>()
+                             .MaxBy(x => x.Bestellungen.Count);
+                             //.FirstOrDefault();
         }
 
 
