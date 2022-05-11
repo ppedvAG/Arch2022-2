@@ -30,11 +30,10 @@ var cont = builder.Build();
 
 var core = new Core(cont.Resolve<IUnitOfWork>());
 
-var query = core.UnitOfWork.GetRepository<Kunde>().Query().Where(x => x.Name.Length > 1).OrderBy(x => x.Bestellungen.Count);
-
-query = query.ThenBy(x => x.Land);
-
-foreach (var kunde in query.ToList())
+//var query = core.UnitOfWork.GetRepository<Kunde>().Query().Where(x => x.Name.Length > 1).OrderBy(x => x.Bestellungen.Count);
+//query = query.ThenBy(x => x.Land);
+//foreach (var kunde in query.ToList())
+foreach (var kunde in core.UnitOfWork.KundenRepository.GetKundenWithOpenBills())
 {
     Console.WriteLine($"{kunde.Name}");
     foreach (var b in kunde.Bestellungen)

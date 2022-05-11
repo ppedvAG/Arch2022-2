@@ -119,6 +119,8 @@ namespace ppedv.Shopchestra.Logic.Tests
 
     class TestUoW : IUnitOfWork
     {
+        public IKundenRepository KundenRepository => throw new NotImplementedException();
+
         public IRepository<T> GetRepository<T>() where T : Entity
         {
             return new TestRepo<T>();

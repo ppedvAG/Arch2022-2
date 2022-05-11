@@ -3,20 +3,6 @@ using ppedv.Shopchestra.Model.Contracts;
 
 namespace ppedv.Shopchestra.Data.EfCore
 {
-    public class EfUnitOfWork : IUnitOfWork
-    {
-        EfContext _context = new EfContext();
-
-        public IRepository<T> GetRepository<T>() where T : Entity
-        {
-            return new EfRepository<T>(_context);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-    }
 
     public class EfRepository<T> : IRepository<T> where T : Entity
     {
@@ -27,7 +13,7 @@ namespace ppedv.Shopchestra.Data.EfCore
             _context = context;
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             //if(typeof(T) == typeof(Kunde))
             //    _context.Kunden.Add(entity as Kunde);
