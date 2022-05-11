@@ -11,23 +11,22 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
         //Core core = new Core(new Data.EfCore.EfRepository());
         Core core;
 
-        public KundenController(IRepository repo)
+        public KundenController(IUnitOfWork unitOfWork)
         {
-            core = new Core(repo);
+            core = new Core(unitOfWork);
         }
 
 
         // GET: KundenController
         public ActionResult Index()
         {
-
-            return View(core.Repository.GetAll<Kunde>());
+            return View(core.UnitOfWork.GetRepository<Kunde>().GetAll());
         }
 
         // GET: KundenController/Details/5
         public ActionResult Details(int id)
         {
-            return View(core.Repository.GetById<Kunde>(id));
+            return View(core.UnitOfWork.GetRepository<Kunde>().GetById(id));
         }
 
         // GET: KundenController/Create
@@ -43,8 +42,8 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
         {
             try
             {
-                core.Repository.Add(kunde);
-                core.Repository.Save();
+                core.UnitOfWork.GetRepository<Kunde>().Add(kunde);
+                core.UnitOfWork.Save();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -57,7 +56,7 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
         // GET: KundenController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(core.Repository.GetById<Kunde>(id));
+            return View(core.UnitOfWork.GetRepository<Kunde>().GetById(id));
         }
 
         // POST: KundenController/Edit/5
@@ -67,8 +66,8 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
         {
             try
             {
-                core.Repository.Update(kunde);
-                core.Repository.Save();
+                core.UnitOfWork.GetRepository<Kunde>().Update(kunde);
+                core.UnitOfWork.Save();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -80,7 +79,7 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
         // GET: KundenController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(core.Repository.GetById<Kunde>(id));
+            return View(core.UnitOfWork.GetRepository<Kunde>().GetById(id));
         }
 
         // POST: KundenController/Delete/5
@@ -90,11 +89,11 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
         {
             try
             {
-                var k = core.Repository.GetById<Kunde>(id);
+                var k = core.UnitOfWork.GetRepository<Kunde>().GetById(id);
                 if (k != null)
                 {
-                    core.Repository.Delete(k);
-                    core.Repository.Save();
+                    core.UnitOfWork.GetRepository<Kunde>().Delete(k);
+                    core.UnitOfWork.Save();
                 }
                 return RedirectToAction(nameof(Index));
             }

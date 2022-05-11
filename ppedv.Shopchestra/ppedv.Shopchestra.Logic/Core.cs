@@ -6,19 +6,19 @@ namespace ppedv.Shopchestra.Logic
 {
     public class Core
     {
-        public IRepository Repository { get; init; }
+        public IUnitOfWork UnitOfWork { get; init; }
 
-        public Core(IRepository repository)
+        public Core(IUnitOfWork unitOfWork)
         {
-            Repository = repository;
+            UnitOfWork = unitOfWork;
         }
-       
 
         public Kunde? GetVIPCustomer()
         {
-            return Repository.GetAll<Kunde>()
-                             .MaxBy(x => x.Bestellungen.Count);
-                             //.FirstOrDefault();
+                             //.MaxBy(x => x.Bestellungen.Count);
+            return UnitOfWork.GetRepository<Kunde>().Query()
+                             .OrderByDescending(x => x.Bestellungen.Count)
+                             .FirstOrDefault();
         }
 
 
@@ -28,7 +28,7 @@ namespace ppedv.Shopchestra.Logic
             //    throw new ArgumentNullException();
             Guard.IsNotNull(bestellung, nameof(bestellung));
             Guard.IsNotNull(bestellung.Positionen, nameof(bestellung.Positionen));
-            
+
             return bestellung.Positionen.Sum(x => x.Einzelpreis * (decimal)x.Menge);
         }
 

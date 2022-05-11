@@ -10,6 +10,7 @@ Console.WriteLine("*** Shopchestra v0.1 ***");
 
 //DI per hand mit Referenz
 //Core core = new Core(new EfRepository());
+//Core core = new Core(new EfUnitOfWork());
 
 //DI per Reflection + EfCore als Nuget-Pack
 //var filePath = @"C:\Users\Fred\source\repos\Arch2022-2\ppedv.Shopchestra\ppedv.Shopchestra.Data.EfCore\bin\Debug\net6.0\ppedv.Shopchestra.Data.EfCore.dll";
@@ -21,14 +22,15 @@ Console.WriteLine("*** Shopchestra v0.1 ***");
 //DI per AutoFac
 var builder = new ContainerBuilder();
 //builder.RegisterType<EfRepository>().As<IRepository>();
-builder.RegisterType<EfRepository>().AsImplementedInterfaces();
+//builder.RegisterType<EfRepository>().AsImplementedInterfaces();
+builder.RegisterType<EfUnitOfWork>().AsImplementedInterfaces();
 //builder.RegisterType<XMLRepository>().AsImplementedInterfaces();
 //...
 var cont = builder.Build();
 
-var core = new Core(cont.Resolve<IRepository>());
+var core = new Core(cont.Resolve<IUnitOfWork>());
 
-var query = core.Repository.Query<Kunde>().Where(x => x.Name.Length > 1).OrderBy(x => x.Bestellungen.Count);
+var query = core.UnitOfWork.GetRepository<Kunde>().Query().Where(x => x.Name.Length > 1).OrderBy(x => x.Bestellungen.Count);
 
 query = query.ThenBy(x => x.Land);
 

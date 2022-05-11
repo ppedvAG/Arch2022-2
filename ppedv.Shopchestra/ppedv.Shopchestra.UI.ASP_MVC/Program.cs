@@ -5,7 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IRepository>(x => new EfRepository());
+//builder.Services.AddScoped<IRepository>(x => new EfRepository());
+builder.Services.AddScoped<IUnitOfWork>(x => new EfUnitOfWork());
 
 var app = builder.Build();
 

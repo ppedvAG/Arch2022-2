@@ -77,46 +77,82 @@ namespace ppedv.Shopchestra.Logic.Tests
         [Fact]
         public void GetVIPCustomer_3Kunden_Barney_should_be_VIP()
         {
-            var core = new Core(new TestRepo());
+            var core = new Core(new TestUoW());
 
             var result = core.GetVIPCustomer();
 
             Assert.Equal("Barney", result.Name);
         }
 
-        [Fact]
-        public void GetVIPCustomer_3Kunden_Barney_should_be_VIP_moq()
-        {
-            var mock = new Mock<IRepository>();
-            mock.Setup(x => x.GetAll<Kunde>()).Returns(() =>
-            {
-                var k1 = new Kunde() { Name = "Fred" };
-                k1.Bestellungen.Add(new Bestellung());
+        //[Fact]
+        //public void GetVIPCustomer_3Kunden_Barney_should_be_VIP_moq()
+        //{
+        //    var mock = new Mock<IRepository>();
+        //    mock.Setup(x => x.GetAll<Kunde>()).Returns(() =>
+        //    {
+        //        var k1 = new Kunde() { Name = "Fred" };
+        //        k1.Bestellungen.Add(new Bestellung());
 
-                var k2 = new Kunde() { Name = "Barney" };
-                k2.Bestellungen.Add(new Bestellung());
-                k2.Bestellungen.Add(new Bestellung());
-                k2.Bestellungen.Add(new Bestellung());
+        //        var k2 = new Kunde() { Name = "Barney" };
+        //        k2.Bestellungen.Add(new Bestellung());
+        //        k2.Bestellungen.Add(new Bestellung());
+        //        k2.Bestellungen.Add(new Bestellung());
 
-                var k3 = new Kunde() { Name = "Wilma" };
-                k3.Bestellungen.Add(new Bestellung());
-                k3.Bestellungen.Add(new Bestellung());
+        //        var k3 = new Kunde() { Name = "Wilma" };
+        //        k3.Bestellungen.Add(new Bestellung());
+        //        k3.Bestellungen.Add(new Bestellung());
 
-                return new[] { k1,  k3 , k2, };
-            });
+        //        return new[] { k1,  k3 , k2, };
+        //    });
 
-            var core = new Core(mock.Object);
+        //    var core = new Core(mock.Object);
 
-            var result = core.GetVIPCustomer();
+        //    var result = core.GetVIPCustomer();
 
-            Assert.Equal("Barney", result.Name);
-        }
+        //    Assert.Equal("Barney", result.Name);
+        //}
 
     }
 
-    class TestRepo : IRepository
+    class TestUoW : IUnitOfWork
     {
-        public IEnumerable<T> GetAll<T>() where T : Entity
+        public IRepository<T> GetRepository<T>() where T : Entity
+        {
+            return new TestRepo<T>();
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
+    class TestRepo<T> : IRepository<T> where T : Entity 
+    {
+        public void Add(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+           
+                throw new NotImplementedException();
+        }
+
+        public T GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<T> Query()
         {
             if (typeof(T) == typeof(Kunde))
             {
@@ -132,42 +168,17 @@ namespace ppedv.Shopchestra.Logic.Tests
                 k3.Bestellungen.Add(new Bestellung());
                 k3.Bestellungen.Add(new Bestellung());
 
-                yield return k1 as T;
-                yield return k2 as T;
-                yield return k3 as T;
+                return new[] { k1, k2, k3 }.Cast<T>().AsQueryable();
             }
             else
                 throw new NotImplementedException();
         }
-        public void Add<T>(T entity) where T : Entity
-        {
-            throw new NotImplementedException();
-        }
 
-        public void Delete<T>(T entity) where T : Entity
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public T GetById<T>(int id) where T : Entity
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update<T>(T entity) where T : Entity
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<T> Query<T>() where T : Entity
+        public void Update(T entity)
         {
             throw new NotImplementedException();
         }
     }
+
+    
 }
