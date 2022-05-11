@@ -1,10 +1,14 @@
-﻿using ppedv.Shopchestra.Logic;
+﻿using ppedv.Shopchestra.Data.EfCore;
+using ppedv.Shopchestra.Logic;
 using ppedv.Shopchestra.Model;
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 Console.WriteLine("*** Shopchestra v0.1 ***");
 
-Core core = new Core();
+//DI per hand mit Referenz
+Core core = new Core(new EfRepository());
+
+
 
 foreach (var kunde in core.Repository.GetAll<Kunde>())
 {

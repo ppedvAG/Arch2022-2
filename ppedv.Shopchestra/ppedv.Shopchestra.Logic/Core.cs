@@ -12,13 +12,7 @@ namespace ppedv.Shopchestra.Logic
         {
             Repository = repository;
         }
-
-        public Core() //todo di
-        {
-            Repository = new Data.EfCore.EfRepository();
-        }
-
-        
+       
 
         public Kunde? GetVIPCustomer()
         {

@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ppedv.Shopchestra.Data.EfCore\ppedv.Shopchestra.Data.EfCore.csproj" />
     <ProjectReference Include="..\ppedv.Shopchestra.Model\ppedv.Shopchestra.Model.csproj" />
   </ItemGroup>
 

@@ -9,13 +9,14 @@ namespace ppedv.Shopchestra.Logic.Tests
 {
     public class CoreTests
     {
+
         [Fact]
         public void CalcBestellSumme_1_Pos_1_Menge_Results_12()
         {
             var b = new Bestellung();
             b.Positionen.Add(new BestellPosition() { Menge = 1, Einzelpreis = 12 });
 
-            var core = new Core();
+            var core = new Core(null);
 
             var result = core.CalcBestellSumme(b);
 
@@ -28,7 +29,7 @@ namespace ppedv.Shopchestra.Logic.Tests
             var b = new Bestellung();
             b.Positionen.Add(new BestellPosition() { Menge = 2, Einzelpreis = 12 });
 
-            var core = new Core();
+            var core = new Core(null);
 
             var result = core.CalcBestellSumme(b);
 
@@ -42,7 +43,7 @@ namespace ppedv.Shopchestra.Logic.Tests
             b.Positionen.Add(new BestellPosition() { Menge = 2, Einzelpreis = 6 });
             b.Positionen.Add(new BestellPosition() { Menge = 2, Einzelpreis = 6 });
 
-            var core = new Core();
+            var core = new Core(null);
 
             var result = core.CalcBestellSumme(b);
 
@@ -54,7 +55,7 @@ namespace ppedv.Shopchestra.Logic.Tests
         {
             var b = new Bestellung();
 
-            var core = new Core();
+            var core = new Core(null);
 
             var result = core.CalcBestellSumme(b);
 
@@ -64,7 +65,7 @@ namespace ppedv.Shopchestra.Logic.Tests
         [Fact]
         public void CalcBestellSumme_Bestellung_null_throws_ArgumentNullEx()
         {
-            var core = new Core();
+            var core = new Core(null);
 
             Assert.Throws<ArgumentNullException>(() => core.CalcBestellSumme(null));
 
