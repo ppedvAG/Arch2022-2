@@ -34,6 +34,24 @@ namespace Calculator.Test
         }
 
         [Test]
+        [TestCase(0,0,0)]
+        [TestCase(1,2,3)]
+        [TestCase(100,16,116)]
+        [TestCase(100,-20,80)]
+        [TestCase(-100,-20,-120)]
+        public void Sum_With_Cases(int a, int b, int exp)
+        {
+            //Arrange
+            Calc calc = new Calc();
+
+            //Act
+            var result = calc.Sum(a, b);
+
+            //Assert
+            Assert.AreEqual(exp, result);
+        }
+
+        [Test]
         public void Sum_MAX_and_1_throws()
         {
             Calc calc = new Calc();
