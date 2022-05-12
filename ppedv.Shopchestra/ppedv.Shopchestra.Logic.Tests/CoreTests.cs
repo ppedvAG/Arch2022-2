@@ -52,6 +52,7 @@ namespace ppedv.Shopchestra.Logic.Tests
         }
 
         [Fact]
+        [Trait("Category","Unittest")]
         public void CalcBestellSumme_0_Pos_Results_0()
         {
             var b = new Bestellung();

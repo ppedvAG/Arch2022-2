@@ -1,0 +1,42 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="ppedv.Shopchestra.Data.EfCore.Tests" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="ppedv.Shopchestra.Data.EfCore.Tests" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="EfContextTests" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="ppedv.Shopchestra.Data.EfCore.Tests.EfContextTests.Can_create_DB" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Can_create_DB" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="ppedv.Shopchestra.Data.EfCore.Tests.EfContextTests.Can_CRUD_Kunde" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Can_CRUD_Kunde" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="ppedv.Shopchestra.Data.EfCore.Tests.EfContextTests.Can_CR_Kunde" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="Can_CR_Kunde" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>

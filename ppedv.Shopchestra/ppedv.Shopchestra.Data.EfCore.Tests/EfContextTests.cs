@@ -14,6 +14,7 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
     public class EfContextTests
     {
         [TestMethod]
+        [TestCategory("Systemtest")]
         public void Can_create_DB()
         {
             var context = new EfContext();
@@ -25,8 +26,11 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
         }
 
         [TestMethod]
+        [TestCategory("Systemtest")]
+
         public void Can_CRUD_Kunde()
         {
+
             var k = new Kunde() { Name = $"Fred{Guid.NewGuid()}" };
             string newName = $"Wilma{Guid.NewGuid()}";
 
@@ -58,7 +62,7 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
             using (var context = new EfContext()) //READ + UPDATE
             {
                 var loaded = context.Kunden.Find(k.Id);
-                
+
                 Assert.IsNull(loaded);
                 loaded.Should().BeNull();
             }
@@ -66,6 +70,8 @@ namespace ppedv.Shopchestra.Data.EfCore.Tests
 
 
         [TestMethod]
+        [TestCategory("Systemtest")]
+
         public void Can_CR_Kunde()
         {
             var fix = new Fixture();
