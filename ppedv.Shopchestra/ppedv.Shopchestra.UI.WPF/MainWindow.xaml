@@ -12,8 +12,8 @@
         <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
     </Window.Style>
     <DockPanel>
-        <TextBlock DockPanel.Dock="Top" Text="Öffnen" AutomationProperties.AutomationId="tb"/>
-        <Menu DockPanel.Dock="Top">
+        <TextBox DockPanel.Dock="Top" Text="Öffnen" AutomationProperties.AutomationId="tb"/>
+        <Menu DockPanel.Dock="Top" AutomationProperties.AutomationId="menu">
             <MenuItem Header="Datei">
                 <MenuItem AutomationProperties.AutomationId="openMenuItem" Header="Öffnen"/>
                 <Separator/>
