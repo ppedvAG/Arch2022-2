@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.Shopchestra.UI.DevCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.Shopchestra.Logic.Tests", "ppedv.Shopchestra.Logic.Tests\ppedv.Shopchestra.Logic.Tests.csproj", "{CB9D9532-67AE-4B8E-A5E3-0ADF216E3FFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Shopchestra.UI.ASP_MVC", "ppedv.Shopchestra.UI.ASP_MVC\ppedv.Shopchestra.UI.ASP_MVC.csproj", "{741AC7C9-970E-46C7-9763-3A25ABBCDB6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.Shopchestra.UI.ASP_MVC", "ppedv.Shopchestra.UI.ASP_MVC\ppedv.Shopchestra.UI.ASP_MVC.csproj", "{741AC7C9-970E-46C7-9763-3A25ABBCDB6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.ShopchestraUI.Blazor", "ppedv.ShopchestraUI.Blazor\ppedv.ShopchestraUI.Blazor.csproj", "{75C6BF45-57C8-47B2-9638-81C957C4DB1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{741AC7C9-970E-46C7-9763-3A25ABBCDB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{741AC7C9-970E-46C7-9763-3A25ABBCDB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{741AC7C9-970E-46C7-9763-3A25ABBCDB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C6BF45-57C8-47B2-9638-81C957C4DB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C6BF45-57C8-47B2-9638-81C957C4DB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C6BF45-57C8-47B2-9638-81C957C4DB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C6BF45-57C8-47B2-9638-81C957C4DB1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

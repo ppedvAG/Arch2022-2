@@ -1,0 +1,61 @@
+﻿@page "/instrumente"
+
+@using ppedv.ShopchestraUI.Blazor.Data
+@using ppedv.Shopchestra.Model
+@inject InstrumenteService service
+
+<button class="btn btn-primary" @onclick="AddNewDemoInstrument">Neues Pusteding...</button>
+
+<h3>Instrumente</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Bezeichnung
+            </th>
+            <th>
+                Beschreibung
+            </th>
+            <th>
+                Hersteller
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in instrument)
+        {
+            <tr>
+                <td>@i.Bezeichnung</td>
+                <td>@i.Beschreibung</td>
+                <td>@i.Hersteller</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+
+
+
+@code {
+
+    IEnumerable<Musikinstrument> instrument;
+
+    protected override void OnInitialized()
+    {
+        Load();
+    }
+
+    public void Load()
+    {
+        instrument = service.Uow.GetRepository<Musikinstrument>().GetAll();
+    }
+
+    public void AddNewDemoInstrument()
+    {
+      
+        Load();
+    }
+
+}
+
