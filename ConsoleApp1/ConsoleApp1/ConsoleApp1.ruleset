@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Rules for ConsoleApp1" Description="Code analysis rules for ConsoleApp1.csproj." ToolsVersion="17.0">
+  <IncludeAll Action="Warning" />
+</RuleSet>
