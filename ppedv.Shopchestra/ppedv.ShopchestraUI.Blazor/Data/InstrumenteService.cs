@@ -1,16 +1,17 @@
-﻿using ppedv.Shopchestra.Model;
+﻿using ppedv.Shopchestra.Logic;
+using ppedv.Shopchestra.Model;
 using ppedv.Shopchestra.Model.Contracts;
 
 namespace ppedv.ShopchestraUI.Blazor.Data
 {
     public class InstrumenteService
     {
-        public IUnitOfWork Uow { get; }
 
+        public Core Core { get; }
 
         public InstrumenteService(IUnitOfWork uow)
         {
-            Uow = uow;
+            Core = new Core(uow);
         }
 
         public void CreateNewPusteDing()
@@ -21,8 +22,19 @@ namespace ppedv.ShopchestraUI.Blazor.Data
                 Beschreibung = "Nicht umdrehen!",
                 Hersteller = "Bosch"
             };
-            Uow.GetRepository<Musikinstrument>().Add(newDing);
-            Uow.Save();
+            Core.UnitOfWork.GetRepository<Musikinstrument>().Add(newDing);
+            Core.UnitOfWork.Save();
+        }
+
+        public void CreateDemos()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var m = Core.GetDemodatenService().CreateDemoMusikinstrument();
+                Core.UnitOfWork.GetRepository<Musikinstrument>().Add(m);
+            }
+            Core.UnitOfWork.Save();
+
         }
     }
 }

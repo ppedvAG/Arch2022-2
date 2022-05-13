@@ -8,6 +8,10 @@ namespace ppedv.Shopchestra.Logic
     {
         public IUnitOfWork UnitOfWork { get; init; }
 
+        public DemodatenService GetDemodatenService()
+            => new DemodatenService(UnitOfWork);
+            
+
         public Core(IUnitOfWork unitOfWork)
         {
             UnitOfWork = unitOfWork;
@@ -15,7 +19,7 @@ namespace ppedv.Shopchestra.Logic
 
         public Kunde? GetVIPCustomer()
         {
-                             //.MaxBy(x => x.Bestellungen.Count);
+            //.MaxBy(x => x.Bestellungen.Count);
             return UnitOfWork.GetRepository<Kunde>().Query()
                              .OrderByDescending(x => x.Bestellungen.Count)
                              .FirstOrDefault();
