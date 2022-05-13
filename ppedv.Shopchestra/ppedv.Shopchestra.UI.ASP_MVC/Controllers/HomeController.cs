@@ -8,6 +8,14 @@ namespace ppedv.Shopchestra.UI.ASP_MVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+
+        /// <summary>
+        /// Gome mit Löffel
+        /// </summary>
+        ///<remarks>
+        ///bla bla bla
+        /// </remarks>
+        /// <param name="logger">ein löffel</param>
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;

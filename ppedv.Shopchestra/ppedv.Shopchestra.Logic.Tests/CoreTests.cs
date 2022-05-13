@@ -52,7 +52,7 @@ namespace ppedv.Shopchestra.Logic.Tests
         }
 
         [Fact]
-        [Trait("Category","Unittest")]
+        [Trait("Category", "Unittest")]
         public void CalcBestellSumme_0_Pos_Results_0()
         {
             var b = new Bestellung();
@@ -85,34 +85,38 @@ namespace ppedv.Shopchestra.Logic.Tests
             Assert.Equal("Barney", result.Name);
         }
 
-        //[Fact]
-        //public void GetVIPCustomer_3Kunden_Barney_should_be_VIP_moq()
-        //{
-        //    var mock = new Mock<IRepository>();
-        //    mock.Setup(x => x.GetAll<Kunde>()).Returns(() =>
-        //    {
-        //        var k1 = new Kunde() { Name = "Fred" };
-        //        k1.Bestellungen.Add(new Bestellung());
+        [Fact]
+        public void GetVIPCustomer_3Kunden_Barney_should_be_VIP_moq()
+        {
+            var repoMock = new Mock<IRepository<Kunde>>();
+            repoMock.Setup(x => x.Query()).Returns(() =>
+            {
+                var k1 = new Kunde() { Name = "Fred" };
+                k1.Bestellungen.Add(new Bestellung());
 
-        //        var k2 = new Kunde() { Name = "Barney" };
-        //        k2.Bestellungen.Add(new Bestellung());
-        //        k2.Bestellungen.Add(new Bestellung());
-        //        k2.Bestellungen.Add(new Bestellung());
+                var k2 = new Kunde() { Name = "Barney" };
+                k2.Bestellungen.Add(new Bestellung());
+                k2.Bestellungen.Add(new Bestellung());
+                k2.Bestellungen.Add(new Bestellung());
 
-        //        var k3 = new Kunde() { Name = "Wilma" };
-        //        k3.Bestellungen.Add(new Bestellung());
-        //        k3.Bestellungen.Add(new Bestellung());
+                var k3 = new Kunde() { Name = "Wilma" };
+                k3.Bestellungen.Add(new Bestellung());
+                k3.Bestellungen.Add(new Bestellung());
 
-        //        return new[] { k1,  k3 , k2, };
-        //    });
+                return new[] { k1, k3, k2, }.AsQueryable();
+            });
 
-        //    var core = new Core(mock.Object);
+            var uowMock = new Mock<IUnitOfWork>();
+            uowMock.Setup(x => x.GetRepository<Kunde>()).Returns(() => repoMock.Object);
 
-        //    var result = core.GetVIPCustomer();
+            var core = new Core(uowMock.Object);
 
-        //    Assert.Equal("Barney", result.Name);
-        //}
+            var result = core.GetVIPCustomer();
 
+            Assert.Equal("Barney", result.Name);
+
+            uowMock.Verify(x => x.GetRepository<Kunde>(), Times.Exactly(1));
+        }
     }
 
     class TestUoW : IUnitOfWork
@@ -130,7 +134,7 @@ namespace ppedv.Shopchestra.Logic.Tests
 
 
 
-    class TestRepo<T> : IRepository<T> where T : Entity 
+    class TestRepo<T> : IRepository<T> where T : Entity
     {
         public void Add(T entity)
         {
@@ -144,8 +148,8 @@ namespace ppedv.Shopchestra.Logic.Tests
 
         public IEnumerable<T> GetAll()
         {
-           
-                throw new NotImplementedException();
+
+            throw new NotImplementedException();
         }
 
         public T GetById(int id)
@@ -181,5 +185,5 @@ namespace ppedv.Shopchestra.Logic.Tests
         }
     }
 
-    
+
 }
