@@ -34,11 +34,11 @@ namespace Calculator.Test
         }
 
         [Test]
-        [TestCase(0,0,0)]
-        [TestCase(1,2,3)]
-        [TestCase(100,16,116)]
-        [TestCase(100,-20,80)]
-        [TestCase(-100,-20,-120)]
+        [TestCase(0, 0, 0)]
+        [TestCase(1, 2, 3)]
+        [TestCase(100, 16, 116)]
+        [TestCase(100, -20, 80)]
+        [TestCase(-100, -20, -120)]
         public void Sum_With_Cases(int a, int b, int exp)
         {
             //Arrange
@@ -82,13 +82,13 @@ namespace Calculator.Test
 
             using (ShimsContext.Create())
             {
-                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2022, 5, 9);//mo
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime (2022, 5, 9);//mo
                 Assert.IsFalse(calc.IsWeekend());
-                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2022, 5, 10);//di
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime (2022, 5, 10);//di
                 Assert.IsFalse(calc.IsWeekend());
-                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2022, 5, 11);//mi
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime (2022, 5, 11);//mi
                 Assert.IsFalse(calc.IsWeekend());
-                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2022, 5, 12);//do
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime (2022, 5, 12);//do
                 Assert.IsFalse(calc.IsWeekend());
                 System.Fakes.ShimDateTime.NowGet = () => new DateTime(2022, 5, 13);//fr
                 Assert.IsFalse(calc.IsWeekend());

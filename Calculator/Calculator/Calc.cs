@@ -8,6 +8,12 @@ namespace Calculator
     public class Calc
     {
 
+        /// <summary>Sums the specified a.</summary>
+        /// <param name="a">a.</param>
+        /// <param name="b">The b.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         internal int Sum(int a, int b)
         {
 
@@ -18,6 +24,9 @@ namespace Calculator
         }
 
 
+        /// <summary>Determines whether this instance is weekend.</summary>
+        /// <returns>
+        ///   <c>true</c> if this instance is weekend; otherwise, <c>false</c>.</returns>
         public bool IsWeekend()
         {
             return DateTime.Now.DayOfWeek == DayOfWeek.Sunday ||
