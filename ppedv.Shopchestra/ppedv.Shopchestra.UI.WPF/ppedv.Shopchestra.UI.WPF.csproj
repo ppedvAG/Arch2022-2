@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\ppedv.Shopchestra.Data.EfCore\ppedv.Shopchestra.Data.EfCore.csproj" />
+    <ProjectReference Include="..\ppedv.Shopchestra.Logic\ppedv.Shopchestra.Logic.csproj" />
+    <ProjectReference Include="..\ppedv.Shopchestra.Model\ppedv.Shopchestra.Model.csproj" />
   </ItemGroup>
 
 </Project>
