@@ -22,7 +22,8 @@
                 <ColumnDefinition Width="3"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" 
+            <DataGrid AutomationProperties.AutomationId="datagrid"
+                       AutoGenerateColumns="False" 
                       ItemsSource="{Binding Musikinstrumente}"
                       SelectedItem="{Binding SelectedInstrument}">
                 <DataGrid.Columns>

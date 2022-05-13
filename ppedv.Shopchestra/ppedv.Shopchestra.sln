@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.ShopchestraUI.Blazor"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Shopchestra.UI.WPF", "ppedv.Shopchestra.UI.WPF\ppedv.Shopchestra.UI.WPF.csproj", "{B53105CA-E992-4552-ADB9-5E56EE108B6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Shopchestra.UI.WPF.UITests", "ppedv.Shopchestra.UI.WPF.UITests\ppedv.Shopchestra.UI.WPF.UITests.csproj", "{1428A068-9146-483E-B2BC-C148E14C9966}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{B53105CA-E992-4552-ADB9-5E56EE108B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B53105CA-E992-4552-ADB9-5E56EE108B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B53105CA-E992-4552-ADB9-5E56EE108B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1428A068-9146-483E-B2BC-C148E14C9966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1428A068-9146-483E-B2BC-C148E14C9966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1428A068-9146-483E-B2BC-C148E14C9966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1428A068-9146-483E-B2BC-C148E14C9966}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
